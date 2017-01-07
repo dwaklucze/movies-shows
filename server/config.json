@@ -1,0 +1,9 @@
+{
+  "host": "localhost",
+  "port": "3000",
+  "react": true,
+  "database": {
+    "host": "ds137267.mlab.com:37267/shop",
+    "pass": "app:password"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "learningjs",
+  "version": "1.0.0",
+  "description": "Initial project for angular 1.x used with ES6 and example how to make a scalable NG application.",
+  "main": "gulpfile.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-router": "^0.3.2",
+    "autoprefixer": "^6.6.1",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "body-parser": "^1.15.2",
+    "eslint-plugin-angular": "^1.6.1",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-pug": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.0.0",
+    "gulp-sass-lint": "^1.3.2",
+    "gulp-strip-comments": "^2.4.3",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.8",
+    "mongoose": "^4.7.6",
+    "postcss": "^5.2.8",
+    "require-dir": "^0.3.1"
+  },
+  "scripts": {
+    "postinstall": "gulp --color --silent"
+  },
+  "author": "MikePorydzaj",
+  "license": "ISC"
+}
