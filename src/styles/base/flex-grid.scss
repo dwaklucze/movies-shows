@@ -1,0 +1,126 @@
+@mixin grid-row {
+  flex: 1;
+}
+
+@mixin row-basics {
+  display: flex;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+@mixin flex-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@for $col from 1 through $columns {
+
+  // without margin
+  .w-#{$col}-flex {
+    @include row-basics;
+    @include flex-row;
+    flex-basis: ((100 / $columns) * $col) * 1%;
+    max-width: ((100 / $columns) * $col) * 1%;
+  }
+
+  // with margin
+  .c-#{$col}-flex {
+    @include row-basics;
+    @include flex-row;
+    width: ((100 / $columns) * $col) * 1%;
+
+    @if ($col < $columns) {
+      margin-bottom: 1%;
+      margin-right: 1%;
+    }
+  }
+}
+
+@each $breakpoint, $size in $base-sizes {
+  @for $col from 1 through $columns {
+
+    // with margin
+    @include respond-to($breakpoint) {
+      .w-#{$col}-#{$breakpoint}-flex {
+        @include row-basics;
+        @include flex-row;
+        flex-basis: ((100 / $columns) * $col) * 1%;
+        max-width: ((100 / $columns) * $col) * 1%;
+      }
+    }
+
+    // without margin
+    @include respond-to($breakpoint) {
+      .c-#{$col}-#{$breakpoint}-flex {
+        @include row-basics;
+        @include flex-row;
+        float: left;
+        width: ((100 / $columns) * $col) * 1%;
+        @if ($col < $columns) {
+          margin-right: 1%;
+        }
+      }
+    }
+  }
+
+  .no-#{$breakpoint} {
+    @include respond-to($breakpoint) {
+      display: none;
+    }
+  }
+
+  .end-#{$breakpoint} {
+    justify-content: flex-end;
+    text-align: end;
+  }
+
+  .top-#{$breakpoint} {
+    align-items: flex-start;
+  }
+
+  .middle-#{$breakpoint} {
+    align-items: center;
+  }
+
+  .bottom-#{$breakpoint} {
+    align-items: flex-end;
+  }
+
+  .around-#{$breakpoint} {
+    justify-content: space-around;
+  }
+
+  .between-#{$breakpoint} {
+    justify-content: space-between;
+  }
+
+  .first-#{$breakpoint} {
+    order: -1;
+  }
+
+  .last-#{$breakpoint} {
+    order: 1;
+  }
+}
+
+.flex {
+  .container {
+    flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    padding-left: .5%;
+    padding-right: .5%;
+  }
+
+  .container-fluid {
+    display: flex;
+    padding-left: .5%;
+    padding-right: .5%;
+  }
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}

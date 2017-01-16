@@ -1,0 +1,12 @@
+.w-3.w-4-l.w-6-m.w-12-s.float-right.p-a-4.p-a-2-s
+
+  div.w-12.p-r-4
+    input(type="text" class="w-12 input m-t-0" ng-model="$ctrl.search" ng-model-options="{debounce: 750}" ng-focus="$ctrl.isSuggestionClosed = false" ng-blur="$ctrl.hideSuggestions()" ng-change="$ctrl.getList()" placeholder="Search...")
+    span.search
+
+  p(ng-bind="$ctrl.error" ng-show="$ctrl.error.length && $ctrl.search.length").pos-absolute
+
+  section(ng-if="($ctrl.suggestions.length && !$ctrl.isSuggestionClosed) && !$ctrl.error.length").bg-col-white
+
+    dropdown-list(data="::$ctrl.suggestions" class="fs-1" model="'search'" value="'imdbID'" state="'main.details'" state-params="true" template="'components/searchbox/item.html'")
+

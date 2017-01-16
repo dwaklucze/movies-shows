@@ -1,0 +1,67 @@
+@import '../variables';
+@import '../utils/mixins';
+
+@for $value from $minvalue to $maxvalue {
+  @each $breakpoint, $size in $base-sizes {
+    @each $alias-property, $prop-value in $properties {
+      @each $alias-direction, $from-value in $directions {
+
+        @if $alias-direction == a {
+          .#{$alias-property}-#{$alias-direction}-#{$value} {
+            @if $breakpoint == x {
+
+              @if $alias-property != b {
+                $final: calc((#{$value} * #{$size}) * #{$count-every});
+                #{$prop-value}: $final;
+              }
+
+              @if $alias-property == b {
+                border: #{$value}px solid;
+              }
+
+            }
+
+            @if $breakpoint != null {
+              @include respond-to($breakpoint) {
+                &-#{$breakpoint} {
+                  $final: calc((#{$value} * #{$size}) * #{$count-every});
+                  #{$prop-value}: $final;
+                }
+              }
+            }
+          }
+        }
+
+        @if $alias-direction != a {
+          .#{$alias-property}-#{$alias-direction}-#{$value} {
+            $final: calc((#{$value} * #{$size}) * #{$count-every});
+
+            @if $breakpoint == x {
+              $final: calc((#{$value} * #{$size}) * #{$count-every});
+              $propertyname: #{$prop-value}-#{$from-value};
+
+              @if $alias-property != b {
+                #{$propertyname}: $final;
+              }
+
+              @if $alias-property == b {
+                border-#{$from-value}: #{$value}px solid;
+              }
+            }
+
+            @if $breakpoint != null {
+              @include respond-to($breakpoint) {
+                &-#{$breakpoint} {
+                  $final: calc((#{$value} * #{$size}) * #{$count-every});
+                  $propertyname: #{$prop-value}-#{$from-value};
+                  #{$propertyname}: $final;
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

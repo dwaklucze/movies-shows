@@ -1,3 +1,5 @@
+/* scripts/modules.js */
+
 import angular from 'angular';
 import UserModule from './User/_UserModule';
 

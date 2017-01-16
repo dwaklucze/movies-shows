@@ -1,0 +1,60 @@
+@import '../variables';
+@import '../utils/mixins';
+@each $direction, $property in $aligns {
+  @if $direction != center {
+    .float-#{$property} {
+      float: #{$property};
+    }
+  }
+
+  .align-#{$property} {
+    text-align: #{$property};
+  }
+}
+
+@each $breakpoint, $size in $base-sizes {
+  @each $direction, $property in $directions {
+    @if $direction != center {
+      @include respond-to($breakpoint) {
+        .float-#{$property}-#{$breakpoint} {
+          float: #{$property};
+        }
+      }
+    }
+
+    @include respond-to($breakpoint) {
+      .align-#{$property}-#{$breakpoint} {
+        text-align: #{$property};
+      }
+    }
+  }
+}
+
+@for $value from $minvalue to $maxvalue {
+  @each $breakpoint, $size in $base-sizes {
+    @if $breakpoint == x {
+      .z-#{$value} {
+        z-index: #{$value};
+      }
+    }
+
+    @include respond-to($breakpoint) {
+      .z-#{$value}-#{$breakpoint} {
+        z-index: #{$value};
+      }
+    }
+  }
+}
+
+
+.pos-absolute {
+  position: absolute;
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.pos-fixed {
+  position: fixed;
+}

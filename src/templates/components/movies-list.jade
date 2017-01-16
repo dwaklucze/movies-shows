@@ -1,0 +1,6 @@
+div(ng-repeat="movie in ::$ctrl.items.Search" class="w-8")
+    .c-4
+      img(ng-src="{{::movie.Poster}}" class="w-12")
+    .c-8-set
+      h1(ng-bind="::movie.Title")
+

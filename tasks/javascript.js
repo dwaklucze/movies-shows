@@ -13,10 +13,14 @@ var gulp = require('gulp'),
 
 
 gulp.task('lint', ['templates'], function() {
-    return gulp.src(['./src/scripts/' + '**/*.js', '!node_modules/**', '!src/scripts/templateCache.js'])
+    return gulp.src([
+            './src/scripts/' + '**/*.js',
+            '!node_modules/**',
+            '!src/scripts/templateCache.js'
+        ])
         .pipe(eslint())
         .pipe(eslint.format())
-      //  .pipe(eslint.failAfterError());
+        //  .pipe(eslint.failAfterError());
 });
 
 gulp.task('javascript', ['lint'], function() {
@@ -30,12 +34,13 @@ gulp.task('javascript', ['lint'], function() {
         .bundle()
         .pipe(source('ng-app.js'))
         .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(config.env !== 'dev' ? uglify() : gutil.noop())
         .pipe(config.env !== 'dev' ? strip() : gutil.noop())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/js'))
         .on('end', function() {
-            return gulp.start('clean:js');
+          gulp.start('clean:js');
         });
 });
 

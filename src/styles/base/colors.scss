@@ -1,0 +1,15 @@
+@import '../variables';
+
+@each $color, $value in $colors {
+  .col-#{$color} {
+    color: #{$value};
+  }
+
+  .bg-col-#{$color} {
+    background-color: #{$value};
+  }
+
+  .b-col-#{$color} {
+    border-color: #{$value};
+  }
+}

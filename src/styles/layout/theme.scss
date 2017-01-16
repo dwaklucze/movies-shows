@@ -1,0 +1,17 @@
+.red {
+  li,
+  a {
+    &:hover {
+      color: map-get($colors, 'red');
+    }
+  }
+}
+
+.green {
+  li,
+  a {
+    &:hover {
+      color: map-get($colors, 'green');
+    }
+  }
+}

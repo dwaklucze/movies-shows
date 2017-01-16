@@ -1,0 +1,41 @@
+@import '../variables';
+// Method 1) Pure CSS
+.star-rating {
+  unicode-bidi: bidi-override;
+  .red & {
+    color: rgba(map-get($colors, 'red'), .2);
+  }
+
+  .green & {
+    color: rgba(map-get($colors, 'green'), .2);
+  }
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+
+  &-top {
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  &-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+}
+
+
+.star-rating-top {
+  .red & {
+    color: map-get($colors, 'red');
+  }
+
+  .green & {
+    color: map-get($colors, 'green');
+  }
+}

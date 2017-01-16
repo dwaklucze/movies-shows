@@ -1,4 +1,5 @@
 {
   "appname": "customName",
-  "env": "dev"
+  "env": "dev",
+  "API": "http://www.omdbapi.com/"
 }

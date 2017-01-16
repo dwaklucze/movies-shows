@@ -12,8 +12,11 @@ gulp.task('jade', function() {
         .pipe(gulp.dest('./dist/templates'));
 });
 
-gulp.task('templates', ['jade'], function(){
-    return gulp.src(['dist/templates**/*.html', '!dist/templates/index.html'])
+gulp.task('templates', ['jade'], function() {
+    return gulp.src([
+            '!dist/templates/index.html',
+            'dist/templates/**/*.html'
+        ])
         .pipe(templateCache('templateCache.js', {
             module: 'templateCache',
             standalone: true,

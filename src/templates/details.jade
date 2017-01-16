@@ -1,0 +1,38 @@
+main.w-10.w-12-l.w-12-m.w-12-s(ng-class="::{'red': $details.item.Type === 'series', 'green': $details.item.Type === 'movies'}")
+  section.w-12.p-l-12.p-l-6-m.p-l-0-s
+    aside.w-4.p-l-12.p-l-6-m.p-l-0-s
+      img(ng-src="{{::$details.item.Poster}}").w-12.b-a-5.b-col-white
+
+    aside.w-8.p-l-8.p-l-2-s
+      header
+        h1.lh-8.lh-4-m.lh-3-s.fs-12.fs-4-s
+          span(ng-bind="::$details.item.Title")
+          span(ng-bind="::'(' + $details.item.Year +')'").m-l-4.fs-2.fs-2-m.fs-2-s
+
+        div.m-t-2
+          div(ng-if="::$details.fullTime")
+            span(ng-bind="::$details.fullTime")
+
+          div(ng-if="::!$details.fullTime").m-b-4
+            span(ng-if="::$details.item.hours")
+              span(ng-bind="::$details.item.hours").m-r-1
+              span.m-r-1 hours
+            span(ng-if="::$details.item.mins")
+              span(ng-bind="::$details.item.mins").m-r-1
+              span mins
+
+          div.w-12
+            rating(votes="::$details.item.imdbVotes" stars="::$details.item.imdbRating" max-stars="10")
+      main
+        div
+          p.m-b-2 Director:
+            span(ng-bind="::$details.item.Director").m-l-2
+          p.m-b-2 Writer:
+            span(ng-bind="::$details.item.Writer").m-l-2
+          p.m-b-2 Genre:
+            span(ng-bind="::$details.item.Genre").m-l-2.m
+          p.m-b-2 Country:
+            span(ng-bind="::$details.item.Country").m-l-2
+          p.m-b-6 Release:
+            span(ng-bind="::$details.item.Released").m-l-2
+          p(ng-bind="::$details.item.Plot")

@@ -1,0 +1,40 @@
+@import '../variables';
+@import '../helpers';
+
+// sass-lint:disable nesting-path
+
+.dropdown-list {
+  position: absolute;
+  z-index: 3;
+
+  li {
+
+    &:hover {
+      background: lighten(map-get($colors, 'grey'), 35%);
+    }
+  }
+}
+
+.input {
+  height: 2.5em;
+  line-height: 2.5em;
+}
+
+.search {
+  background: map-get($colors, 'green');
+  border-radius: 3px;
+  content: url('../images/search.png');
+  display: inline-block;
+  max-height: 33px;
+  padding: 4px;
+  position: absolute;
+  right: 1px;
+
+  .red & {
+    background: map-get($colors, 'red');
+  }
+
+  .green & {
+    background: map-get($colors, 'green');
+  }
+}

@@ -1,0 +1,52 @@
+@import '../variables';
+@import '../utils/mixins';
+
+@mixin input-default($size, $input) {
+  display: block;
+  $spacing: calc(#{$size}/1.25);
+
+
+
+  @if($input != 1) {
+    min-height: calc(#{$size} * 4);
+    resize: vertical;
+  }
+
+  margin: $spacing 0;
+  padding: calc(#{$spacing} * .4);
+  width: 100%;
+}
+
+@each $breakpoint, $size in $font-size {
+  @if $breakpoint == x {
+    input {
+      @include input-default($size, 1);
+    }
+
+    textarea {
+      @include input-default(#{$size}, 0);
+    }
+  }
+
+  @include respond-to($breakpoint) {
+    input {
+      @include input-default($size, 1);
+    }
+
+    textarea {
+      @include input-default(#{$size}, 0);
+    }
+  }
+
+
+}
+
+@each $breakpoint, $size in $font-size {
+  @if $breakpoint == x {
+    .dropdown-list {
+      max-height: calc(#{$size}  * 14);
+      overflow: hidden;
+      overflow-y: auto;
+    }
+  }
+}

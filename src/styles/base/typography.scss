@@ -1,0 +1,61 @@
+@import '../variables';
+@import '../utils/mixins';
+//font size
+@each $breakpoint, $size in $font-size {
+  @for $font-size from $minvalue through $maxvalue {
+    $resizeby: calc(calc(calc(#{$counteveryforfont} * #{$font-size}) + 1) - #{$counteveryforfont});
+    $font-calculated: calc(#{$resizeby} * #{$size});
+    @if $breakpoint == x {
+      .fs-#{$font-size} {
+        font-size: $font-calculated;
+      }
+    }
+    @include respond-to($breakpoint) {
+      .fs-#{$font-size}-#{$breakpoint} {
+        font-size: $font-calculated;
+      }
+    }
+  }
+}
+
+// letter-spacing
+@each $breakpoint, $size in $font-size {
+  @for $space-size from 1 through 8 {
+    $resizeby: calc(calc(calc(#{$counteveryforfont} * #{$space-size})) - #{$counteveryforfont});
+    $space-calculated: calc(calc(#{$resizeby} * calc(#{$size}) /2));
+    @if $breakpoint == x {
+      .ls-#{$space-size} {
+        letter-spacing: $space-calculated;
+      }
+    }
+    @include respond-to($breakpoint) {
+      .ls-#{$space-size}-#{$breakpoint} {
+        letter-spacing: $space-calculated;
+      }
+    }
+  }
+}
+
+// line-height
+@each $breakpoint, $size in $font-size {
+  @for $space-size from 1 through 16 {
+    $resizeby: calc(calc(calc(.3 * #{$space-size}) + 1) - .3);
+    $lheight-calculated: calc(calc(#{$resizeby} * #{$size}));
+    @if $breakpoint == x {
+      .lh-#{$space-size} {
+        @if $space-size == 1 {
+          line-height: #{$lheight-calculated};
+        }
+        @if $space-size != 1 {
+          line-height: #{$lheight-calculated};
+        }
+      }
+    }
+    @include respond-to($breakpoint) {
+      .lh-#{$space-size}-#{$breakpoint} {
+        line-height: $lheight-calculated;
+      }
+    }
+  }
+}
+
